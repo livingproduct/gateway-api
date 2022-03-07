@@ -1,0 +1,38 @@
+table:
+  name: actionClick
+  schema: public
+array_relationships:
+- name: flowActions
+  using:
+    foreign_key_constraint_on:
+      column: clickId
+      table:
+        name: flowActions
+        schema: public
+event_triggers:
+- definition:
+    enable_manual: false
+    insert:
+      columns: "*"
+  headers:
+  - name: event-bus-admin-secret
+    value_from_env: EVENT_BUS_ADMIN_SECRET
+  name: insertActionClick
+  retry_conf:
+    interval_sec: 10
+    num_retries: 0
+    timeout_sec: 60
+  webhook: http://host.docker.internal:5004/insertActionClick
+- definition:
+    enable_manual: false
+    update:
+      columns: "*"
+  headers:
+  - name: event-bus-admin-secret
+    value_from_env: EVENT_BUS_ADMIN_SECRET
+  name: updateActionClick
+  retry_conf:
+    interval_sec: 10
+    num_retries: 0
+    timeout_sec: 60
+  webhook: http://host.docker.internal:5004/updateActionClick

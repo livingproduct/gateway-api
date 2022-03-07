@@ -1,1 +1,8 @@
-[]
+- "!include public_FlowState.yaml"
+- "!include public_actionClick.yaml"
+- "!include public_actionGoto.yaml"
+- "!include public_actionKeyboardType.yaml"
+- "!include public_actionScreenshot.yaml"
+- "!include public_actionWaitForTime.yaml"
+- "!include public_flowActions.yaml"
+- "!include public_flows.yaml"

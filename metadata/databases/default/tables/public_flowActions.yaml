@@ -1,0 +1,25 @@
+table:
+  name: flowActions
+  schema: public
+object_relationships:
+- name: click
+  using:
+    foreign_key_constraint_on: clickId
+- name: embeddedFlow
+  using:
+    foreign_key_constraint_on: embeddedFlowId
+- name: flowByFlow
+  using:
+    foreign_key_constraint_on: flow
+- name: goto
+  using:
+    foreign_key_constraint_on: gotoId
+- name: keyboardType
+  using:
+    foreign_key_constraint_on: keyboardTypeId
+- name: screenshot
+  using:
+    foreign_key_constraint_on: screenshotId
+- name: waitForTime
+  using:
+    foreign_key_constraint_on: waitForTimeId
