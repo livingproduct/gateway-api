@@ -1,0 +1,11 @@
+table:
+  name: actionWaitForTime
+  schema: public
+array_relationships:
+- name: flowActions
+  using:
+    foreign_key_constraint_on:
+      column: waitForTimeId
+      table:
+        name: flowActions
+        schema: public
