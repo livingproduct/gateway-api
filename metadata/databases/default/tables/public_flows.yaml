@@ -2,6 +2,9 @@ table:
   name: flows
   schema: public
 object_relationships:
+- name: account
+  using:
+    foreign_key_constraint_on: accountId
 - name: state
   using:
     foreign_key_constraint_on: stateValue
