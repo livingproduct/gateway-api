@@ -1,0 +1,34 @@
+table:
+  name: accounts
+  schema: public
+array_relationships:
+- name: flowActions
+  using:
+    foreign_key_constraint_on:
+      column: accountId
+      table:
+        name: flowActions
+        schema: public
+- name: flows
+  using:
+    foreign_key_constraint_on:
+      column: accountId
+      table:
+        name: flows
+        schema: public
+event_triggers:
+- definition:
+    enable_manual: false
+    insert:
+      columns: "*"
+  headers:
+  - name: event-bus-admin-secret
+    value_from_env: EVENT_BUS_ADMIN_SECRET
+  - name: source
+    value: gateway
+  name: insertAccount
+  retry_conf:
+    interval_sec: 10
+    num_retries: 0
+    timeout_sec: 60
+  webhook: "{{EVENT_BUS_URL}}/insertAccount"
